@@ -5,11 +5,14 @@ let User = new Schema({
     user_firstName:{
         type: String
     },
+    user_middleName:{
+        type: String
+    },
     user_lastName:{
         type: String
     },
-    user_yearOfBirth:{
-        type: Number
+    user_dateOfBirth:{
+        type: Date
     },
     user_gender:{
         type: String
@@ -20,15 +23,28 @@ let User = new Schema({
     user_country:{
         type: String
     },
-    user_allergy:{
+    user_medicalConditions: {
         type: String
     },
-    user_hasAllergy:{
+    user_emergencyContact:[{
+        firstName: String,
+        lastName: String,
+        phone: Number,
+        email: String
+    }],
+    user_phoneNumber: {
+        type: Number
+    },
+    user_isWhatsAppNumber: {
         type: Boolean
     },
-    user_phoneNumber:{
-        type: Number
+    user_email:{
+        type: String
+    },
+    user_comments: {
+        type: String
     }
+
 });
 
 module.exports = mongoose.model('User', User);    
