@@ -12,7 +12,7 @@ let User = new Schema({
         type: String
     },
     user_yearOfBirth:{
-        type: String
+        type: Date
     },
     user_gender:{
         type: String
@@ -62,6 +62,9 @@ let User = new Schema({
     user_emergencyContact: {
         type: String
     },
+},
+{
+    timestamps: true   //adds created_at and updated_at timestamps for data points
 });
 
 module.exports = mongoose.model('User', User);    
