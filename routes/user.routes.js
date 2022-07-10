@@ -26,4 +26,9 @@ module.exports = function(app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
+  app.put(
+    "/api/user/update",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.updateUser
+  );
 };

@@ -82,9 +82,9 @@ exports.getUsersPerAsthan = (req, res) =>{
     })
   }
 
-  // Update a user 
+  // Update a user, match first last and dob?
   exports.updateUser = (req, res) => {
-      const filter = {user_firstName: req.body.user_firstName};
+      const filter = {user_firstName: req.body.user_firstName, user_lastName: req.body.user_lastName, user_yearOfBirth: req.body.user_yearOfBirth};
       const update = { user_firstName: req.body.user_firstName,
         user_lastName: req.body.user_lastName,
         user_yearOfBirth: req.body.user_yearOfBirth,
@@ -101,7 +101,13 @@ exports.getUsersPerAsthan = (req, res) =>{
         user_hostedby: req.body.user_hostedby,
         user_goingToAsthan: req.body.user_goingToAsthan};
 
-    User.findOneAndUpdate((filter, update)=>{
-
+    User.findOneAndUpdate((err, filter, update)=>{
+      if(err){
+        req.status(500).send({message: err});
+        return;
+      }
+      else{
+        res.send({message: "User created"});
+      }
     })
   }
