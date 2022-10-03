@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 const db = require("./DataSchema/index");
 const Role = db.role;
 
-// const url = "mongodb+srv://sangat:waheguru22@dssgs.ieddu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const url = "mongodb+srv://sangat:waheguru22@dssgs.ieddu.mongodb.net/myFirstDatabase";
 
-const url = "mongodb+srv://sangat:waheguru22@dssgs.ieddu.mongodb.net/test";
+// const url = "mongodb+srv://sangat:waheguru22@dssgs.ieddu.mongodb.net/test";
 
 //dsggs 
 db.mongoose.connect(url,
