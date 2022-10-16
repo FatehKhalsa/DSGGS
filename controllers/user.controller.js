@@ -87,8 +87,7 @@ exports.getUsersPerAsthan = (req, res) =>{
 
     user.save((err, user)=>{
       if(err){
-        console.log(req)
-        req && req.status(500).send({message: err});
+        res.status(500).send({message: err});
         return;
       }
       else{
