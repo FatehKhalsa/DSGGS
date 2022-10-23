@@ -83,6 +83,7 @@ exports.getUsersPerAsthan = (req, res) =>{
       user_ride_to_airport: req.body.user_ride_to_airport,
       user_family_identified: req.body.user_family_identified,
       user_last_updated_by: req.body.user_last_updated_by,
+      user_active: req.body.user_active
     });
 
     user.save((err, user)=>{
@@ -132,6 +133,7 @@ exports.getUsersPerAsthan = (req, res) =>{
         user_ride_to_airport: req.body.user_ride_to_airport,
         user_family_identified: req.body.user_family_identified,
         user_last_updated_by: req.body.user_last_updated_by,
+        user_active: req.body.user_active
       }
 
     User.findOneAndUpdate(filter, update, {new: true}, function(err, user){
@@ -144,6 +146,21 @@ exports.getUsersPerAsthan = (req, res) =>{
         res.send(user);
       }
     })
+  }
+
+  // Delete a user 
+  exports.deleteuser = (req, res) => {
+    const id = {_id: req.body._id};
+
+    User.findByIdAndDelete(id, function (err, docs) {
+      if (err){
+          console.log(err)
+      }
+      else{
+          console.log("Deleted : ", docs);
+      }
+  });
+
   }
 
 
