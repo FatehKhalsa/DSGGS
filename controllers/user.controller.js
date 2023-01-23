@@ -24,6 +24,16 @@ exports.allAccess = (req, res) => {
   });
 }
 
+exports.getArrivalReportUsers = (req, res) => {
+  User.find({ user_arrivingFlightDate: { $nin: [ null, "" ] } }, function(err, users){
+    if(err){
+        console.log(err)
+    } else{
+        res.json(users);
+    }
+});
+}
+
 exports.getUsersNotAssignedToHost = (req, res) => {
   console.log("Request", req)
   User.find({ user_hostedby: '', user_goingToAsthan: req.query.asthan}, function(err, users){
